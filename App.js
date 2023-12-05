@@ -54,7 +54,7 @@ function App() {
 
       <button onClick={() => {
         let list = [...title];
-        list.push(newContent);
+        list.unshift(newContent);
         setTitle(list);
         setNewContent("")
       }}>글 추가</button>
