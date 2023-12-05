@@ -42,6 +42,11 @@ function App() {
                 setGood(list);
               }}>😍</span> {good[index]}  </h4>
               <p>2월 17일 발행</p>
+              <button onClick={() => {
+                let list = [...title];
+                list.splice(index,1);
+                setTitle(list);
+              }}>삭제</button>
             </div>
           )
         })
