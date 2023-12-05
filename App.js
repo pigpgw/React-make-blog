@@ -5,29 +5,19 @@ import { useState, useEffect } from 'react';
 function App() {
 
   let [title, setTitle] = useState(['남자 코드 추천', '강남 우동 맛집', '파이썬 독학'])
-  let [like , setLike] = useState(0);
-  let [modal , setModal] = useState(false);
+  let [modal, setModal] = useState(false);
   let [good, setGood] = useState(new Array(title.length).fill(0));
+  let [titleIndex, setTitleIndex] = useState(0);
 
-  function changeTitle(){
-    let list = [...title];
-    list[0] = "여자 코트 추천"
-    setTitle(list);
-  }
-
-  function sortTitle(){
+  function sortTitle() {
     let list = [...title]
     list.sort();
     setTitle(list)
   }
 
-  function modalVisibleHandler(){
-    setModal(!modal);
+  function titleIndexChanger(index) {
+    setTitleIndex(index);
   }
-
-  useEffect(() => {
-    console.log("응애")
-  },good)
 
   return (
 
@@ -39,11 +29,13 @@ function App() {
       <button onClick={sortTitle}>가나다 정렬</button>
 
       {
-        title.map((item,index) => {
-
+        title.map((item, index) => {
           return (
             <div className="list" key={index}>
-              <h4>{item} <span onClick={() => {
+              <h4 onClick={() => {
+                setModal(true)
+                titleIndexChanger(index)
+              }}>{item} <span onClick={() => {
                 let list = [...good];
                 list[index] += 1;
                 setGood(list);
@@ -53,25 +45,25 @@ function App() {
           )
         })
       }
-    
+
       {
         modal && (
-          <Modal/>
+          <Modal titleIndex={titleIndex} title={title} />
         )
       }
-      <button onClick={modalVisibleHandler}>모달 보여줘</button>
     </div>
   );
 }
 
-function Modal(){
+function Modal(props) {
   // 의미없는 div대신 <></> 사용
   // <Modal/> 과 <Modal></Modal>이 같음
   return (
     <div className='modal'>
-      <h4>제목</h4>
+      <h4>{props.title[props.titleIndex]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button>글 수정</button>
     </div>
   )
 }
