@@ -8,6 +8,8 @@ function App() {
   let [modal, setModal] = useState(false);
   let [good, setGood] = useState(new Array(title.length).fill(0));
   let [titleIndex, setTitleIndex] = useState(0);
+  let [newContent , setNewContent] = useState("");
+  
 
   function sortTitle() {
     let list = [...title]
@@ -20,12 +22,10 @@ function App() {
   }
 
   return (
-
     <div className="App">
       <div className="black-nav">
         <h4>React Blog</h4>
       </div>
-
       <button onClick={sortTitle}>가나다 정렬</button>
 
       {
@@ -35,7 +35,8 @@ function App() {
               <h4 onClick={() => {
                 setModal(true)
                 titleIndexChanger(index)
-              }}>{item} <span onClick={() => {
+              }}>{item} <span onClick={(e) => {
+                e.stopPropagation();
                 let list = [...good];
                 list[index] += 1;
                 setGood(list);
@@ -45,6 +46,14 @@ function App() {
           )
         })
       }
+
+      <button onClick={() => {
+        let list = [...title];
+        list.push(newContent);
+        setTitle(list);
+        setNewContent("")
+      }}>글 추가</button>
+      <input onChange={(e) => setNewContent(e.target.value)} value={newContent}/>
 
       {
         modal && (
