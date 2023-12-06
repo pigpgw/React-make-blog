@@ -9,7 +9,6 @@ function App() {
   let [good, setGood] = useState(new Array(title.length).fill(0));
   let [titleIndex, setTitleIndex] = useState(0);
   let [newContent , setNewContent] = useState("");
-  
 
   function sortTitle() {
     let list = [...title]
@@ -19,6 +18,18 @@ function App() {
 
   function titleIndexChanger(index) {
     setTitleIndex(index);
+  }
+
+  function addContentTitleHandler() {
+    if (newContent.length !== 0) {
+      let list = [...title];
+      list.unshift(newContent);
+      setTitle(list);
+      setNewContent("")
+      let ddabong = [...good];
+      ddabong.unshift(0);
+      setGood(ddabong);
+    }
   }
 
   return (
@@ -52,12 +63,7 @@ function App() {
         })
       }
 
-      <button onClick={() => {
-        let list = [...title];
-        list.unshift(newContent);
-        setTitle(list);
-        setNewContent("")
-      }}>글 추가</button>
+      <button onClick={addContentTitleHandler}>글 추가</button>
       <input onChange={(e) => setNewContent(e.target.value)} value={newContent}/>
 
       {
