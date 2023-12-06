@@ -84,9 +84,18 @@ div {
   font-size: 25px;
 }
 
+.addContainer{
+  
+}
+
 .addBlogContentBtnBox {
   width: 100%;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
 }
 
 .addBlogContentBtn {
@@ -102,4 +111,22 @@ div {
 
 .likeEmoticon {
   margin-left: 10px;
+}
+
+.inputContainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.addBlogTitleInput{
+  width: 30%;
+  height: 30px;
+  text-align: center;
+  margin: 10px;
+}
+
+.addBlogContentInput{
+  width: 30%;
+  height: 400px;
 }

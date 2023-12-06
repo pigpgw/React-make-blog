@@ -9,8 +9,11 @@ function App() {
   let [modal, setModal] = useState(false);
   let [good, setGood] = useState(new Array(title.length).fill(0));
   let [titleIndex, setTitleIndex] = useState(0);
-  let [newContent, setNewContent] = useState("");
+  let [newTitle, setNewTitle] = useState("");
   let [date, setDate] = useState(['2023년 12월 12일 4초', '2023년 12월 10일 17초', '2023년 12월 7일 30초']);
+  let [content, setContent] = useState(['나이스한 블로그', '초 멋진 블로그', '대박 블로그']);
+  let [newContent, setNewContent] = useState("")
+
 
   function sortTitle() {
     let list = [...title]
@@ -23,16 +26,25 @@ function App() {
   }
 
   function addContentTitleHandler() {
-    if (newContent.length !== 0) {
+    if (newTitle.length !== 0) {
       let list = [...title];
-      list.unshift(newContent);
+      list.unshift(newTitle);
       setTitle(list);
-      setNewContent("")
+      setNewTitle("")
       let ddabong = [...good];
       ddabong.unshift(0);
       setGood(ddabong);
       addDate();
+
+      addContentHandler();
     }
+  }
+
+  function addContentHandler(){
+    let list = [...content];
+    list.unshift(newContent);
+    setContent(list);
+    console.log("content",list)
   }
 
   function addDate() {
@@ -82,18 +94,20 @@ function App() {
                   setTitle(list);
                 }}>삭제</button>
               </div>
-
             </div>
           )
         })
       }
-      <div className='addBlogContentBtnBox'>
-        <button className='addBlogContentBtn' onClick={addContentTitleHandler}>글 추가</button>
-        <input className='addBlogContentInput' placeholder='블로그 글 제목을 작성해주세요' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
+      <div className='addContainer'>
+          <div className='addBlogContentBtnBox'>
+            <input className='addBlogTitleInput' placeholder='블로그 글 제목을 작성해주세요' onChange={(e) => setNewTitle(e.target.value)} value={newTitle} />
+            <input className='addBlogContentInput' placeholder='블로그 글 내용을 작성해주세요' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
+            <button className='addBlogContentBtn' onClick={addContentTitleHandler}>글 추가</button>
+          </div>
       </div>
       {
         modal && (
-          <Modal titleIndex={titleIndex} title={title} />
+          <Modal titleIndex={titleIndex} title={title} date={date} content={content} setContent={setContent}/>
         )
       }
     </div>
@@ -103,13 +117,17 @@ function App() {
 function Modal(props) {
   // 의미없는 div대신 <></> 사용
   // <Modal/> 과 <Modal></Modal>이 같음
+
   return (
     <div className='modalContiner'>
       <div className='modal'>
         <h4>{props.title[props.titleIndex]}</h4>
-        <p>날짜</p>
-        <p>상세내용</p>
-        <button>글 수정</button>
+        <p>글 작성 시간 : {props.date[props.titleIndex]}</p>
+        <p>상세내용: {props.content[props.titleIndex]}</p>
+        <div className='blogContentBtnContainer'>
+          <button >글 수정</button>
+          <input></input>
+        </div>
       </div>
     </div>
   )
