@@ -1,4 +1,5 @@
 // eslint-disable
+import { now } from 'mongoose';
 import './App.css';
 import { useState, useEffect } from 'react';
 
@@ -8,7 +9,8 @@ function App() {
   let [modal, setModal] = useState(false);
   let [good, setGood] = useState(new Array(title.length).fill(0));
   let [titleIndex, setTitleIndex] = useState(0);
-  let [newContent , setNewContent] = useState("");
+  let [newContent, setNewContent] = useState("");
+  let [date, setDate] = useState(['2023년 12월 11일', '2023년 12월 11일', '2023년 12월 11일']);
 
   function sortTitle() {
     let list = [...title]
@@ -29,7 +31,21 @@ function App() {
       let ddabong = [...good];
       ddabong.unshift(0);
       setGood(ddabong);
+      addDate();
     }
+  }
+
+  function addDate() {
+    let dt = new Date();
+    let year = dt.getFullYear();
+    let month = dt.getMonth();
+    let day = dt.getDay();
+    let seconds = dt.getSeconds()
+    console.log(year, month, day);
+    let nowDate = `${year + " " + month + " " + day + " " + seconds}`
+    let list = [...date];
+    list.unshift(nowDate);
+    setDate(list);
   }
 
   return (
@@ -37,6 +53,7 @@ function App() {
       <div className="black-nav">
         <h4>React Blog</h4>
       </div>
+
       <button onClick={sortTitle}>가나다 정렬</button>
 
       {
@@ -52,20 +69,23 @@ function App() {
                 list[index] += 1;
                 setGood(list);
               }}>😍</span> {good[index]}  </h4>
-              <p>2월 17일 발행</p>
+
               <button onClick={() => {
                 let list = [...title];
-                list.splice(index,1);
+                list.splice(index, 1);
                 setTitle(list);
               }}>삭제</button>
+
+              {
+                (date.length !== 0) ? <p>{date[index]}</p> : <p>2023년 12월 11일</p>
+              }
+
             </div>
           )
         })
       }
-
       <button onClick={addContentTitleHandler}>글 추가</button>
-      <input onChange={(e) => setNewContent(e.target.value)} value={newContent}/>
-
+      <input onChange={(e) => setNewContent(e.target.value)} value={newContent} />
       {
         modal && (
           <Modal titleIndex={titleIndex} title={title} />
