@@ -10,7 +10,7 @@ function App() {
   let [good, setGood] = useState(new Array(title.length).fill(0));
   let [titleIndex, setTitleIndex] = useState(0);
   let [newContent, setNewContent] = useState("");
-  let [date, setDate] = useState(['2023년 12월 5일 4초', '2023년 12월 7일 17초', '2023년 12월 9일 30초']);
+  let [date, setDate] = useState(['2023년 12월 12일 4초', '2023년 12월 10일 17초', '2023년 12월 7일 30초']);
 
   function sortTitle() {
     let list = [...title]
@@ -70,13 +70,13 @@ function App() {
                 let list = [...good];
                 list[index] += 1;
                 setGood(list);
-              }}>😍</span> {good[index]}  </h4>
+                }}>😍 좋아요</span> {good[index]}  </h4>
 
               <div className='itemBox'>  
                 {
                   (date.length !== 0) ? <p>블로그 글 작성 시간 : {date[index]}</p> : <p> 블로그 글 작성 시간 : 2023년 12월 11일</p>
                 }
-                <button className='itemBtn' onClick={() => {
+                <button className='deleteItemBtn' onClick={() => {
                   let list = [...title];
                   list.splice(index, 1);
                   setTitle(list);
@@ -89,7 +89,7 @@ function App() {
       }
       <div className='addBlogContentBtnBox'>
         <button className='addBlogContentBtn' onClick={addContentTitleHandler}>글 추가</button>
-        <input className='addBlogContentInput' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
+        <input className='addBlogContentInput' placeholder='블로그 글 제목을 작성해주세요' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
       </div>
       {
         modal && (

@@ -18,10 +18,12 @@ div {
 }
 
 .list {
-  padding: 15px;
+  padding: 10px;
   text-align: left;
   border-bottom: 1px solid gray;
   width: 100%;
+  background-color: #eee;
+
 }
 
 .modal{
@@ -32,7 +34,7 @@ div {
 }
 
 .sortBtn {
-  width: 11%;
+  width: 100px;
   height: 35px;
     
   padding: 7px;
@@ -58,11 +60,11 @@ div {
   justify-content: space-between;
 }
 
-.itemBtn {
+.deleteItemBtn {
   position: relative;
   bottom: 20px;
 
-  width: 6%;
+  width: 70px;
   height: 35px;
   padding: 7px;
   background-color: gray(0, 0, 0);
@@ -89,6 +91,7 @@ div {
 .addBlogContentInput {
   width: 250px;
   height: 25px;
+  text-align: center;
 }
 
 .likeEmoticon {
