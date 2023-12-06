@@ -18,16 +18,22 @@ div {
 }
 
 .list {
-  padding: 10px;
+  padding: 20px;
   text-align: left;
   border-bottom: 1px solid gray;
   width: 100%;
   background-color: #eee;
+}
 
+.modalContiner{
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .modal{
-  margin-top: 20px;
+  width: 80%;
+  margin: 20px;
   padding: 20px;
   background: #eee;
   text-align: left;
