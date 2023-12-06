@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 .black-nav {
@@ -8,6 +10,7 @@
   width: 100%;
   color: white;
   padding-left: 20px;
+  height: 100px;
 }
 
 div {
@@ -15,9 +18,10 @@ div {
 }
 
 .list {
-  padding-left: 20px;
+  padding: 15px;
   text-align: left;
   border-bottom: 1px solid gray;
+  width: 100%;
 }
 
 .modal{
@@ -25,4 +29,68 @@ div {
   padding: 20px;
   background: #eee;
   text-align: left;
+}
+
+.sortBtn {
+  width: 11%;
+  height: 35px;
+    
+  padding: 7px;
+  background-color: gray(0, 0, 0);
+  color: black;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.btnBox{
+  width: 100%;
+  height: 70px;
+  padding: 15px;
+  text-align: right;
+  border-bottom: 1px solid black;
+  position: relative;
+
+}
+
+.itemBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemBtn {
+  position: relative;
+  bottom: 20px;
+
+  width: 6%;
+  height: 35px;
+  padding: 7px;
+  background-color: gray(0, 0, 0);
+  color: black;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.blogTitle {
+  margin-top: 35px;
+  font-size: 25px;
+}
+
+.addBlogContentBtnBox {
+  width: 100%;
+  padding: 20px;
+}
+
+.addBlogContentBtn {
+  width: 70px;
+  height: 30px;
+}
+
+.addBlogContentInput {
+  width: 250px;
+  height: 25px;
+}
+
+.likeEmoticon {
+  margin-left: 10px;
 }

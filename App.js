@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  let [title, setTitle] = useState(['남자 코드 추천', '강남 우동 맛집', '파이썬 독학'])
+  let [title, setTitle] = useState(['남자 코트 추천', '강남 우동 맛집', '파이썬 독학'])
   let [modal, setModal] = useState(false);
   let [good, setGood] = useState(new Array(title.length).fill(0));
   let [titleIndex, setTitleIndex] = useState(0);
   let [newContent, setNewContent] = useState("");
-  let [date, setDate] = useState(['2023년 12월 11일', '2023년 12월 11일', '2023년 12월 11일']);
+  let [date, setDate] = useState(['2023년 12월 5일 4초', '2023년 12월 7일 17초', '2023년 12월 9일 30초']);
 
   function sortTitle() {
     let list = [...title]
@@ -42,7 +42,7 @@ function App() {
     let day = dt.getDay();
     let seconds = dt.getSeconds()
     console.log(year, month, day);
-    let nowDate = `${year + " " + month + " " + day + " " + seconds}`
+    let nowDate = `${year + "년 " + month + "월 " + day + "일 " + seconds + "초"}`
     let list = [...date];
     list.unshift(nowDate);
     setDate(list);
@@ -51,41 +51,46 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-        <h4>React Blog</h4>
+        <h4 className='blogTitle'>React Blog</h4>
       </div>
 
-      <button onClick={sortTitle}>가나다 정렬</button>
+      <div className='btnBox'>
+        <button className='sortBtn' onClick={sortTitle}>사전순 글 정렬</button>
+      </div>
 
       {
         title.map((item, index) => {
           return (
             <div className="list" key={index}>
-              <h4 onClick={() => {
+              <h4 className='' onClick={() => {
                 setModal(true)
                 titleIndexChanger(index)
-              }}>{item} <span onClick={(e) => {
+              }}>{item} <span className='likeEmoticon' onClick={(e) => {
                 e.stopPropagation();
                 let list = [...good];
                 list[index] += 1;
                 setGood(list);
               }}>😍</span> {good[index]}  </h4>
 
-              <button onClick={() => {
-                let list = [...title];
-                list.splice(index, 1);
-                setTitle(list);
-              }}>삭제</button>
-
-              {
-                (date.length !== 0) ? <p>{date[index]}</p> : <p>2023년 12월 11일</p>
-              }
+              <div className='itemBox'>  
+                {
+                  (date.length !== 0) ? <p>블로그 글 작성 시간 : {date[index]}</p> : <p> 블로그 글 작성 시간 : 2023년 12월 11일</p>
+                }
+                <button className='itemBtn' onClick={() => {
+                  let list = [...title];
+                  list.splice(index, 1);
+                  setTitle(list);
+                }}>삭제</button>
+              </div>
 
             </div>
           )
         })
       }
-      <button onClick={addContentTitleHandler}>글 추가</button>
-      <input onChange={(e) => setNewContent(e.target.value)} value={newContent} />
+      <div className='addBlogContentBtnBox'>
+        <button className='addBlogContentBtn' onClick={addContentTitleHandler}>글 추가</button>
+        <input className='addBlogContentInput' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
+      </div>
       {
         modal && (
           <Modal titleIndex={titleIndex} title={title} />
