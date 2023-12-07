@@ -37,6 +37,8 @@ function App() {
       addDate();
 
       addContentHandler();
+    } else {
+      alert("글 제목을 입력해주세요")
     }
   }
 
@@ -102,7 +104,7 @@ function App() {
           <div className='addBlogContentBtnBox'>
             <input className='addBlogTitleInput' placeholder='블로그 글 제목을 작성해주세요' onChange={(e) => setNewTitle(e.target.value)} value={newTitle} />
             <input className='addBlogContentInput' placeholder='블로그 글 내용을 작성해주세요' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
-            <button className='addBlogContentBtn' onClick={addContentTitleHandler}>글 추가</button>
+            <button className='addBlogContentBtn' onClick={addContentTitleHandler}>블로그 글 추가하기</button>
           </div>
       </div>
       {

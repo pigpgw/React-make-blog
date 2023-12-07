@@ -102,14 +102,21 @@ div {
 }
 
 .addBlogContentBtn {
-  width: 70px;
-  height: 30px;
+  width: 50%;
+  height: 35px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 0;
+  font-weight: 800;
 }
 
 .addBlogContentInput {
   width: 250px;
   height: 25px;
   text-align: center;
+  border-radius: 10px;
+  border: 0;
 }
 
 .likeEmoticon {
@@ -123,13 +130,16 @@ div {
 }
 
 .addBlogTitleInput{
-  width: 30%;
+  width: 50%;
   height: 30px;
   text-align: center;
   margin: 10px;
+  border: 0;
+  border-radius: 10px;
+  
 }
 
 .addBlogContentInput{
-  width: 30%;
+  width: 50%;
   height: 400px;
 }
