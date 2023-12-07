@@ -75,7 +75,6 @@ function App() {
 
       <div className='btnBox'>
         <button className='sortBtn' onClick={sortTitle}>사전순 글 정렬</button>
-        <button onClick={addBlogContenBtn}>블로그 글 추가</button>
       </div>
 
       {
@@ -110,7 +109,7 @@ function App() {
                     let list = [...title];
                     list.splice(index, 1);
                     setTitle(list);
-                  }}>글 삭제</button>
+                  }}>블로그 글 삭제</button>
                 </div>
               </div>
             )
@@ -121,12 +120,16 @@ function App() {
           <div className='addContainer'>
             <div className='addBlogContentBtnBox'>
               <input className='addBlogTitleInput' placeholder='블로그 글 제목을 작성해주세요' onChange={(e) => setNewTitle(e.target.value)} value={newTitle} />
-              <input className='addBlogContentInput' placeholder='블로그 글 내용을 작성해주세요' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
+              <textarea className='addBlogContentInput' placeholder='블로그 글 내용을 작성해주세요' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
               <button className='addBlogContentBtn' onClick={addContentTitleHandler}>블로그 글 추가하기</button>
             </div>
           </div>
         )}
+      <div className='addContentBtnContainer'>
+        <button className='addContentBtn' onClick={addBlogContenBtn}>블로그 글 추가</button>
+      </div>
     </div>
+    
   );
 }
 

@@ -23,7 +23,6 @@ div {
   text-align: left;
   border-bottom: 1px solid gray;
   width: 100%;
-  background-color: white;
 }
 
 .modalContiner{
@@ -61,8 +60,23 @@ div {
   font-weight: 900;
   font-size: 14px;
   border: 0;
+
+
   margin-top: 30px;
-  margin-right: 10px;
+  margin-right: 20px;
+}
+
+.addContentBtn{
+  width: 100px;
+  height: 35px;
+  padding: 7px;
+  background-color: black;
+  color: white;
+  font-weight: 900;
+  font-size: 14px;
+  border: 0;
+  margin-top: 10px;
+  margin-right: 20px;
 }
 
 .btnBox{
@@ -71,7 +85,7 @@ div {
   text-align: right;
   position: relative;
   background-color: white;
-
+  border-bottom: 1px solid black;
 }
 
 .itemBox {
@@ -84,14 +98,13 @@ div {
   position: relative;
   bottom: 20px;
 
-  width: 80px;
+  width: 100px;
   height: 35px;
   padding: 7px;
   background-color: black;
   color: white;
   font-weight: 900;
   font-size: 14px;
-  border-radius: 10px;
   border: 0;
 }
 
@@ -131,6 +144,7 @@ div {
   text-align: center;
   border-radius: 10px;
   border: 0;
+  word-break:break-all;
 }
 
 .likeEmoticon {
@@ -185,4 +199,9 @@ div {
 .modifyBlogContent{
   width: 70px;
   height: 30px;
+}
+
+.addContentBtnContainer {
+  width: 100%;
+  text-align: right;
 }
