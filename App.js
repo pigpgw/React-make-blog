@@ -78,34 +78,39 @@ function App() {
         )
       }
 
-      {
-        title.map((item, index) => {
-          return (
-            <div className="list" key={index}>
-              <h4 className='' onClick={() => {
-                setModal(true)
-                titleIndexChanger(index)
-              }}>{item} <span className='likeEmoticon' onClick={(e) => {
-                e.stopPropagation();
-                let list = [...good];
-                list[index] += 1;
-                setGood(list);
+      <div>
+        <div className='blogContentCounterContainer'>
+          <h3 className='blogContentCounter'>총 개시글 수 : {title.length}</h3>
+        </div>
+        {
+          title.map((item, index) => {
+            return (
+              <div className="list" key={index}>
+                <h4 className='' onClick={() => {
+                  setModal(true)
+                  titleIndexChanger(index)
+                }}>{item} <span className='likeEmoticon' onClick={(e) => {
+                  e.stopPropagation();
+                  let list = [...good];
+                  list[index] += 1;
+                  setGood(list);
                 }}>😍 좋아요</span> {good[index]}  </h4>
 
-              <div className='itemBox'>  
-                {
-                  (date.length !== 0) ? <p>블로그 글 작성 시간 : {date[index]}</p> : <p> 블로그 글 작성 시간 : 2023년 12월 11일</p>
-                }
-                <button className='deleteItemBtn' onClick={() => {
-                  let list = [...title];
-                  list.splice(index, 1);
-                  setTitle(list);
-                }}>삭제</button>
+                <div className='itemBox'>
+                  {
+                    (date.length !== 0) ? <p>블로그 글 작성 시간 : {date[index]}</p> : <p> 블로그 글 작성 시간 : 2023년 12월 11일</p>
+                  }
+                  <button className='deleteItemBtn' onClick={() => {
+                    let list = [...title];
+                    list.splice(index, 1);
+                    setTitle(list);
+                  }}>삭제</button>
+                </div>
               </div>
-            </div>
-          )
-        })
-      }
+            )
+          })
+        }
+      </div>
       <div className='addContainer'>
           <div className='addBlogContentBtnBox'>
             <input className='addBlogTitleInput' placeholder='블로그 글 제목을 작성해주세요' onChange={(e) => setNewTitle(e.target.value)} value={newTitle} />
@@ -132,6 +137,7 @@ function Modal(props) {
         <p>상세내용</p>
         <p>{props.content[props.titleIndex]}</p>
       </div>
+
     </div>
   )
 }
