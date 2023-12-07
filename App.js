@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 
 function App() {
 
-  let [title, setTitle] = useState(['남자 코트 추천', '강남 우동 맛집', '파이썬 독학'])
+  let [title, setTitle] = useState(['남자 코트 추천', '강남 우동 맛집', 'React props란'])
   let [modal, setModal] = useState(false);
   let [good, setGood] = useState(new Array(title.length).fill(0));
   let [titleIndex, setTitleIndex] = useState(0);
@@ -13,6 +13,7 @@ function App() {
   let [date, setDate] = useState(['2023년 12월 12일 4초', '2023년 12월 10일 17초', '2023년 12월 7일 30초']);
   let [content, setContent] = useState(['나이스한 블로그', '초 멋진 블로그', '대박 블로그']);
   let [newContent, setNewContent] = useState("")
+  let [modalVisible, setModalVisible] = useState(false)
 
 
   function sortTitle() {
@@ -62,6 +63,10 @@ function App() {
     setDate(list);
   }
 
+  function  addBlogContenBtn(){
+    setModalVisible(!modalVisible)
+  }
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -70,6 +75,7 @@ function App() {
 
       <div className='btnBox'>
         <button className='sortBtn' onClick={sortTitle}>사전순 글 정렬</button>
+        <button onClick={addBlogContenBtn}>블로그 글 추가</button>
       </div>
 
       {
@@ -80,7 +86,7 @@ function App() {
 
       <div>
         <div className='blogContentCounterContainer'>
-          <h3 className='blogContentCounter'>총 개시글 수 : {title.length}</h3>
+          <h3 className='blogContentCounter'>총 게시글 수 : {title.length}</h3>
         </div>
         {
           title.map((item, index) => {
@@ -98,26 +104,28 @@ function App() {
 
                 <div className='itemBox'>
                   {
-                    (date.length !== 0) ? <p>블로그 글 작성 시간 : {date[index]}</p> : <p> 블로그 글 작성 시간 : 2023년 12월 11일</p>
+                    (date.length !== 0) ? <p >블로그 글 작성 시간 : {date[index]}</p> : <p> 블로그 글 작성 시간 : 2023년 12월 11일</p>
                   }
                   <button className='deleteItemBtn' onClick={() => {
                     let list = [...title];
                     list.splice(index, 1);
                     setTitle(list);
-                  }}>삭제</button>
+                  }}>글 삭제</button>
                 </div>
               </div>
             )
           })
         }
       </div>
-      <div className='addContainer'>
-          <div className='addBlogContentBtnBox'>
-            <input className='addBlogTitleInput' placeholder='블로그 글 제목을 작성해주세요' onChange={(e) => setNewTitle(e.target.value)} value={newTitle} />
-            <input className='addBlogContentInput' placeholder='블로그 글 내용을 작성해주세요' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
-            <button className='addBlogContentBtn' onClick={addContentTitleHandler}>블로그 글 추가하기</button>
+        {modalVisible && (
+          <div className='addContainer'>
+            <div className='addBlogContentBtnBox'>
+              <input className='addBlogTitleInput' placeholder='블로그 글 제목을 작성해주세요' onChange={(e) => setNewTitle(e.target.value)} value={newTitle} />
+              <input className='addBlogContentInput' placeholder='블로그 글 내용을 작성해주세요' onChange={(e) => setNewContent(e.target.value)} value={newContent} />
+              <button className='addBlogContentBtn' onClick={addContentTitleHandler}>블로그 글 추가하기</button>
+            </div>
           </div>
-      </div>
+        )}
     </div>
   );
 }

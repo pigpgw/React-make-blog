@@ -6,7 +6,7 @@
 
 .black-nav {
   display: flex;
-  background-color: rgb(255, 122, 122);
+  background-color: black;
   width: 100%;
   color: white;
   padding-left: 20px;
@@ -49,17 +49,20 @@ div {
   text-align: left;
   padding-left: 20px;
   margin: 0;
+  font-size: 17px;
 }
 
 .sortBtn {
   width: 100px;
   height: 35px;
-    
   padding: 7px;
-  background-color: gray(0, 0, 0);
-  color: black;
-  font-weight: 700;
+  background-color: black;
+  color: white;
+  font-weight: 900;
   font-size: 14px;
+  border: 0;
+  margin-top: 30px;
+  margin-right: 10px;
 }
 
 .btnBox{
@@ -81,13 +84,15 @@ div {
   position: relative;
   bottom: 20px;
 
-  width: 70px;
+  width: 80px;
   height: 35px;
   padding: 7px;
-  background-color: gray(0, 0, 0);
-  color: black;
+  background-color: black;
+  color: white;
   font-weight: 900;
   font-size: 14px;
+  border-radius: 10px;
+  border: 0;
 }
 
 .blogTitle {
@@ -107,7 +112,7 @@ div {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: rgb(255, 122, 122);
+  background-color: black;
 }
 
 .addBlogContentBtn {
