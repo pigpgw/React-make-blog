@@ -73,6 +73,12 @@ function App() {
       </div>
 
       {
+        modal && (
+          <Modal titleIndex={titleIndex} title={title} date={date} content={content} setContent={setContent} />
+        )
+      }
+
+      {
         title.map((item, index) => {
           return (
             <div className="list" key={index}>
@@ -107,11 +113,6 @@ function App() {
             <button className='addBlogContentBtn' onClick={addContentTitleHandler}>블로그 글 추가하기</button>
           </div>
       </div>
-      {
-        modal && (
-          <Modal titleIndex={titleIndex} title={title} date={date} content={content} setContent={setContent}/>
-        )
-      }
     </div>
   );
 }
@@ -122,14 +123,14 @@ function Modal(props) {
 
   return (
     <div className='modalContiner'>
+      <div className='blogContentBtnContainer'>
+        <p>글 작성 시간 : {props.date[props.titleIndex]}</p>
+        <button className='modifyBlogContent'>글 수정</button>
+      </div>
       <div className='modal'>
         <h4>{props.title[props.titleIndex]}</h4>
-        <p>글 작성 시간 : {props.date[props.titleIndex]}</p>
-        <p>상세내용: {props.content[props.titleIndex]}</p>
-        <div className='blogContentBtnContainer'>
-          <button >글 수정</button>
-          <input></input>
-        </div>
+        <p>상세내용</p>
+        <p>{props.content[props.titleIndex]}</p>
       </div>
     </div>
   )
